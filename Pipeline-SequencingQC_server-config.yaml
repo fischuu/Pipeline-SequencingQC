@@ -1,0 +1,13 @@
+__default__:
+    time: 00:30:00
+    job-name:  SequencingQC
+    account: project_2001881
+    ntasks: 1
+    cpus-per-task: 1
+    mem-per-cpu: 4000
+    partition: small
+    working-directory: /scratch/project_2001881/logs/
+    nvme: 10
+
+# Module1 - Preparations
+################################################################################
