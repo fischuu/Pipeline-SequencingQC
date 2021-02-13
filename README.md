@@ -1,2 +1,2 @@
 # Pipeline-SequencingQC
-Differene QC metrics to test sequecing runs
+Different QC metrics to test sequecing runs
