@@ -32,11 +32,77 @@ options(scipen=999,
 knitr::opts_chunk$set(echo = FALSE,
                       cache = FALSE,
                       cache.lazy = FALSE,
-                      dev = c('png', 'pdf'),
+         #             dev = c('png', 'pdf'),
                       fig.align = 'center', fig.height = 5, fig.width = 8.5)
 if(!is.element("snakemake",ls())){
   projFolder <- "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC"
   pipelineFolder <- "/scratch/project_2001881/Pipeline-SequencingQC/"
+  reportFolder <- "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC_QC-report"
+  expected_reads_per_sample <- 50000
 }
 ```
 
+# Basic statistics
+```{r}
+readFilesR1 <- list.files(file.path(reportFolder,"data"))
+subProjects <- sapply(strsplit(readFilesR1,"\\."),"[",1)
+```
+
+## Considered Subprojects
+There are `r length(subProjects)` different projects inside the sequencing run, namely:
+
+```{r report basic stats}
+out <- data.frame(c("Subprojects"),
+                  c(subProjects))
+
+out_html <- knitr::kable(out, col.names = NULL, "html")
+kable_styling(out_html, "striped", position = "left")
+```
+
+## Deviation from expected No. of reads
+
+Expected reads (for paired-end, reads refer to fragments, meaning that the both reads R1 and R2 form one read) were `r expected_reads_per_sample`
+
+```{r import reads per sample}
+no_reads_per_file.files <- list.files(file.path(reportFolder,"data"))
+
+no_reads_per_file <- list()
+
+for(i in 1:length(no_reads_per_file.files)){
+  no_reads_per_file[[i]] <- read.table(file.path(reportFolder,"data",no_reads_per_file.files[i]))
+}
+```
+
+```{r filter no read per sample table}
+no_reads_per_file.R1 <- list()
+for(i in 1:length(no_reads_per_file.files)){
+  no_reads_per_file.R1[[i]] <- no_reads_per_file[[i]][grep("R1_001",no_reads_per_file[[i]][,2]),]
+}
+```
+
+```{r deviation from expectation}
+deviationR1 <- list()
+for(i in 1:length(no_reads_per_file.files)){
+  deviationR1[[i]] <- no_reads_per_file.R1[[i]][,1]/4-expected_reads_per_sample
+  tmpCol <- sign(deviationR1[[i]])
+  tmpCol[tmpCol==-1] <- 2
+  tmpCol[tmpCol==1] <- 3
+  barplot(deviationR1[[i]], col=tmpCol, border=NA)
+}
+```
+
+A list of samples with less reads than expected (for read R1)
+
+```{r table samples GC content,results = 'asis'}
+
+i <- 1
+#for(i in 1:length(no_reads_per_file.files)){
+  tmp <- no_reads_per_file.R1[[i]][(no_reads_per_file.R1[[i]][,1]/4)<expected_reads_per_sample,]
+  if(nrow(tmp)>0){
+    tmp[,1] <- tmp[,1]/4
+    colnames(tmp) <- c("No reads", "Sample")
+    datatable(tmp)
+#    knitr::kable(tmp) %>% kable_styling
+#  }
+}
+```

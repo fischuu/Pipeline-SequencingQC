@@ -4,3 +4,11 @@ report-script: "/scratch/project_2001881/Pipeline-SequencingQC/scripts/workflow-
 pipeline-folder: "/scratch/project_2001881/Pipeline-SequencingQC/"
 pipeline-config: "/scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC_config.yaml"
 report-folder: "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC_QC-report"
+
+###############################################################
+#
+# Input parameters
+#
+###############################################################
+
+expected_reads_per_sample <- 100000

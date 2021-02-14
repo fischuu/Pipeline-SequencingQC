@@ -18,11 +18,15 @@ rule R_finalReport:
     params:
        projFolder=config["project-folder"],
        pipeFolder=config["pipeline-folder"],
-       pipeConfig=config["pipeline-config"]
+       pipeConfig=config["pipeline-config"],
+       reportFolder=config["report-folder"],
+       exp_reads_sample = config["expected_reads_per_sample"]
     shell:"""
        R -e "projFolder <- '{params.projFolder}'; \
              pipelineFolder <- '{params.pipeFolder}'; \
              pipelineConfig <- '{params.pipeConfig}'; \
+             reportFolder <- '{params.reportFolder}' ; \
+             expected_reads_per_sample <- '{params.exp_reads_sample}' ; \
              snakemake <- TRUE;\
              rmarkdown::render('{input.script}',output_file='{output}')" &> {log}
     """
