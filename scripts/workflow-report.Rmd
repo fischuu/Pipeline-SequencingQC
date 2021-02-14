@@ -18,13 +18,13 @@ output:
 ```{r setup, include=FALSE}
 .libPaths(c("/projappl/project_2001746/R/libraries", .libPaths()))
 #library("knitr")
-library("GenomicTools")
-library("Luke")
+#library("GenomicTools")
+#library("Luke")
 library("xtable")   # Needed for LaTeX output of the tables
 library("viridis")  # Needed for the colouring of the plots
 library("rjson")    # Needed for multiqc dgsb etail data
-library("adegenet")
-library("vcfR")
+#library("adegenet")
+#library("vcfR")
 library("DT")
 library("kableExtra")
 options(scipen=999,
