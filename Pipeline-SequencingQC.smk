@@ -7,7 +7,7 @@ import os
 ##### Pipeline - SequencingQC                    #####
 ##### Daniel Fischer (daniel.fischer@luke.fi)    #####
 ##### Natural Resources Institute Finland (Luke) #####
-##### Version: 0.1                               #####
+##### Version: 0.1.1                             #####
 
 ##### set minimum snakemake version #####
 min_version("5.24")
