@@ -1,0 +1,6 @@
+output=$1
+
+for fname in *.fastq.gz
+do
+    zcat $fname | wc -l | awk -v fname=$fname '{print $0,fname}' >> $output
+done
