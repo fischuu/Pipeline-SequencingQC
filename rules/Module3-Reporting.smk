@@ -26,7 +26,7 @@ rule R_finalReport:
              pipelineFolder <- '{params.pipeFolder}'; \
              pipelineConfig <- '{params.pipeConfig}'; \
              reportFolder <- '{params.reportFolder}' ; \
-             expected_reads_per_sample <- '{params.exp_reads_sample}' ; \
+             expected_reads_per_sample <- {params.exp_reads_sample} ; \
              snakemake <- TRUE;\
              rmarkdown::render('{input.script}',output_file='{output}')" &> {log}
     """

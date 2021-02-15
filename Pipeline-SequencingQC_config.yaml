@@ -1,9 +1,9 @@
-project-folder: "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC"
-bcl-folder: "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC_results-bcl"
+project-folder: "/scratch/project_2001881/201204_NB551722_0018_AH2HWGBGXF"
+bcl-folder: "/scratch/project_2001881/201204_NB551722_0018_AH2HWGBGXF_results-bcl"
 report-script: "/scratch/project_2001881/Pipeline-SequencingQC/scripts/workflow-report.Rmd"
 pipeline-folder: "/scratch/project_2001881/Pipeline-SequencingQC/"
 pipeline-config: "/scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC_config.yaml"
-report-folder: "/scratch/project_2001881/201214_NB551722_0019_AHYGCTBGXC_QC-report"
+report-folder: "/scratch/project_2001881/201204_NB551722_0018_AH2HWGBGXF_QC-report"
 
 ###############################################################
 #

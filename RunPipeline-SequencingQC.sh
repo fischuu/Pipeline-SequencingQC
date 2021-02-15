@@ -5,9 +5,9 @@
 module load bioconda/3
 source activate Snakemake
 
-snakemake -s /scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC.smk \
-          --configfile /scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC_config.yaml \
-          --forceall --rulegraph | dot -Tpdf > rulegraph.pdf
+#snakemake -s /scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC.smk \
+#          --configfile /scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC_config.yaml \
+#          --forceall --rulegraph | dot -Tpdf > rulegraph.pdf
 
 snakemake -s /scratch/project_2001881/Pipeline-SequencingQC/Pipeline-SequencingQC.smk \
           -j 200 \

@@ -3,10 +3,6 @@ import pandas as pd
 from snakemake.utils import validate, min_version
 
 import os
-from snakemake.remote.HTTP import RemoteProvider as HTTPRemoteProvider
-
-HTTP = HTTPRemoteProvider()
-shell.executable("bash")
 
 ##### Pipeline - SequencingQC                    #####
 ##### Daniel Fischer (daniel.fischer@luke.fi)    #####
@@ -18,13 +14,9 @@ min_version("5.24")
 
 ##### load config and sample sheets #####
 
-#samplesheet = pd.read_table(config["samplesheet"]).set_index("rawsample", drop=False)
-#rawsamples=list(samplesheet.rawsample)
-#intid=list(samplesheet.intid)
-
-#groups=os.listdir(config["bcl-folder"]+"/fastq")
-#print(*groups)
-groups = ["Arctic_charr"]
+print("Set the different demultiplex groups:")
+groups=next(os.walk(config["bcl-folder"]+"/fastq"))[1]
+print('[%s]' % ', '.join(map(str, groups)))
 
 ##### run complete pipeline #####
 rule all:
