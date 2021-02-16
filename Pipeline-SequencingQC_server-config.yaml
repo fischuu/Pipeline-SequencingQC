@@ -11,3 +11,9 @@ __default__:
 
 # Module1 - Preparations
 ################################################################################
+
+# Module2 - Bash based
+################################################################################
+count_lines_per_subproject:
+    job-name: count_lines_per_subproject
+    time: 02:00:00

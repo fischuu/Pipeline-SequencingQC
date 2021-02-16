@@ -4,7 +4,7 @@
 #####                                                                      #####
 ################################################################################
 
+0.1.3: * Server ruleset for module 1 added
 0.1.2: * Introduced a welcoming screen
        * Simplified the configuration
-
 0.1.1: * First successful run of the sceleton pipeline

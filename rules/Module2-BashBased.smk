@@ -12,6 +12,7 @@ rule count_lines_per_subproject:
         "%s/benchmark/Module2/{groups}.Clps.benchmark.tsv" % (config["project-folder"])
     params: pipeFolder=config["pipeline-folder"]
     shell:"""
+       echo "Count lines per subproject for " {wildcards.groups}
        cd {input}
        {params.pipeFolder}/scripts/wcz {output} &> {log}
   	"""   
