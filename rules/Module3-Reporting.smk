@@ -13,8 +13,7 @@ rule R_finalReport:
         "%s/logs/R/finalReport.log" % (config["project-folder"])
     benchmark:
         "%s/benchmark/R/finalReport.benchmark.tsv" % (config["project-folder"])
-    singularity:
-        "docker://fischuu/r-gbs:3.6.3-0.2"
+    singularity: config["singularity"]["r-gbs"]
     params:
        projFolder=config["project-folder"],
        pipeFolder=config["pipeline-folder"],
