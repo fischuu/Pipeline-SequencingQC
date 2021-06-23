@@ -6,7 +6,7 @@ __default__:
     cpus-per-task: 1
     mem-per-cpu: 4000
     partition: small
-    working-directory: /scratch/project_2001881/logs/
+    working-directory: /scratch/project_2001310/logs/
     nvme: 10
 
 # Module1 - Preparations

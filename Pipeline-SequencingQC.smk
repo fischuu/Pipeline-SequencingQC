@@ -26,6 +26,17 @@ groups=next(os.walk(config["bcl-folder"]+"/fastq"))[1]
 config["singularity"] = {}
 config["singularity"]["r-gbs"]="docker://fischuu/r-gbs:3.6.3-0.2"
 
+##### Input file finctions #####
+
+def get_fastq(bcl_dir,data_dir):
+    """Returns the fastq files for a detected group/subproject"""
+    result_list = os.listdir(bcl_dir"+/fastq/"+data_dir)
+    result = []
+    for i in result_list:
+        new_name = i.replace("_R1_001.fastq.gz", "")
+        result.append(new_name)
+    return result
+
 ##### Print the welcome screen #####
 print("#################################################################################")
 print("##### Welcome to the SequenceQC pipeline")
